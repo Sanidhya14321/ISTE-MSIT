@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionTitle } from "./section-title";
 import { BarChart, Medal, Users } from "lucide-react";
 import { AnimatedCounter } from "../ui/animated-counter";
+import { motion } from "framer-motion";
 
 const stats = [
     { name: 'Life Members', value: 135500, icon: <Users className="h-8 w-8 text-accent" />, suffix: "+" },
@@ -11,46 +12,60 @@ const stats = [
     { name: 'Student Chapters', value: 1649, icon: <BarChart className="h-8 w-8 text-accent" />, suffix: "+" },
 ];
 
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
 export function About() {
   return (
-    <section id="about" className="container">
+    <motion.section 
+      id="about" 
+      className="container"
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ staggerChildren: 0.2 }}
+    >
       <div className="space-y-12">
         <SectionTitle>About Us</SectionTitle>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <motion.div className="grid md:grid-cols-2 gap-8 items-center" variants={fadeIn}>
             <div>
-                <h3 className="text-2xl font-bold mb-4 font-headline">Our Vision & Mission</h3>
-                <p className="text-muted-foreground mb-4">
+                <motion.h3 className="text-2xl font-bold mb-4 font-headline" variants={fadeIn}>Our Vision & Mission</motion.h3>
+                <motion.p className="text-muted-foreground mb-4" variants={fadeIn}>
                     <strong>Vision:</strong> Advance technical education and build a thriving student-tech community.
-                </p>
-                <p className="text-muted-foreground">
+                </motion.p>
+                <motion.p className="text-muted-foreground" variants={fadeIn}>
                     <strong>Mission:</strong> Promote innovation, collaboration, and skill development through national-level activities.
-                </p>
+                </motion.p>
             </div>
             <div>
-                <h3 className="text-2xl font-bold mb-4 font-headline">Our History</h3>
-                <p className="text-muted-foreground">
+                <motion.h3 className="text-2xl font-bold mb-4 font-headline" variants={fadeIn}>Our History</motion.h3>
+                <motion.p className="text-muted-foreground" variants={fadeIn}>
                 Founded in 1941 as APTI, it became ISTE in 1968. Today, ISTE partners with AICTE, MHRD & industry leaders to deliver conferences, seminars, journals, and training programs.
-                </p>
+                </motion.p>
             </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          {stats.map((stat) => (
-            <Card key={stat.name} className="bg-card/50 border-border/50">
-              <CardHeader className="flex flex-col items-center justify-center gap-4">
-                {stat.icon}
-                <CardTitle className="text-4xl font-extrabold text-primary">
-                    <AnimatedCounter from={0} to={stat.value} />
-                    {stat.suffix}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground font-medium">{stat.name}</p>
-              </CardContent>
-            </Card>
+          {stats.map((stat, i) => (
+            <motion.div key={stat.name} custom={i} variants={fadeIn}>
+              <Card className="bg-card/50 border-border/50">
+                <CardHeader className="flex flex-col items-center justify-center gap-4">
+                  {stat.icon}
+                  <CardTitle className="text-4xl font-extrabold text-primary">
+                      <AnimatedCounter from={0} to={stat.value} />
+                      {stat.suffix}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground font-medium">{stat.name}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

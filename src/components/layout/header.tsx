@@ -28,13 +28,22 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         hasScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
       )}>
       <div className="container flex h-16 items-center">
-        <Link href="#" className="mr-6 flex items-center space-x-2">
+        <Link href="#" className="mr-6 flex items-center space-x-2" onClick={(e) => handleLinkClick(e, '#')}>
           <Rocket className="h-6 w-6 text-primary" />
           <span className="font-bold inline-block">ISTE MSIT Hub</span>
         </Link>
@@ -44,6 +53,7 @@ export function Header() {
               key={item.label}
               href={item.link}
               className="transition-colors hover:text-primary"
+              onClick={(e) => handleLinkClick(e, item.link)}
             >
               {item.label}
             </Link>
@@ -51,7 +61,7 @@ export function Header() {
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-4">
           <Button asChild className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href="#membership">Join Now</Link>
+            <Link href="#membership" onClick={(e) => handleLinkClick(e, '#membership')}>Join Now</Link>
           </Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -62,7 +72,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <div className="flex flex-col h-full py-6">
-                <Link href="#" className="mb-8 flex items-center space-x-2" onClick={() => setIsOpen(false)}>
+                <Link href="#" className="mb-8 flex items-center space-x-2" onClick={(e) => handleLinkClick(e, '#')}>
                   <Rocket className="h-6 w-6 text-primary" />
                   <span className="font-bold">ISTE MSIT Hub</span>
                 </Link>
@@ -72,14 +82,14 @@ export function Header() {
                       key={item.label}
                       href={item.link}
                       className="text-lg font-medium transition-colors hover:text-primary"
-                      onClick={() => setIsOpen(false)}
+                      onClick={(e) => handleLinkClick(e, item.link)}
                     >
                       {item.label}
                     </Link>
                   ))}
                 </nav>
                 <Button asChild className="mt-auto bg-accent hover:bg-accent/90 text-accent-foreground">
-                    <Link href="#membership" onClick={() => setIsOpen(false)}>Join Now</Link>
+                    <Link href="#membership" onClick={(e) => handleLinkClick(e, '#membership')}>Join Now</Link>
                 </Button>
               </div>
             </SheetContent>

@@ -39,7 +39,7 @@ Website Tone: {{tone}}
 Key Departments: {{departments}}
 ISTE Values: {{values}}
 
-Write a compelling welcome message that immediately conveys what ISTE at MSIT is all about.`,
+Write a compelling and concise welcome message (around 15-20 words) that immediately conveys what ISTE at MSIT is all about.`,
 });
 
 const generateWelcomeMessageFlow = ai.defineFlow(
