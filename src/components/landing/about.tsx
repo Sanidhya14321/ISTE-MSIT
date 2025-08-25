@@ -1,20 +1,14 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionTitle } from "./section-title";
-import { BarChart, Calendar, Medal, Users } from "lucide-react";
-
-const scaleReach = {
-  lifeMembers: "1,35,500+",
-  studentMembers: "5,00,000+",
-  institutions: "3,052+",
-  studentChapters: "1,649+",
-  facultyChapters: "1,453+",
-};
+import { BarChart, Medal, Users } from "lucide-react";
+import { AnimatedCounter } from "../ui/animated-counter";
 
 const stats = [
-    { name: 'Life Members', value: scaleReach.lifeMembers, icon: <Users className="h-8 w-8 text-accent" /> },
-    { name: 'Student Members', value: scaleReach.studentMembers, icon: <Users className="h-8 w-8 text-accent" /> },
-    { name: 'Institutions', value: scaleReach.institutions, icon: <Medal className="h-8 w-8 text-accent" /> },
-    { name: 'Student Chapters', value: scaleReach.studentChapters, icon: <BarChart className="h-8 w-8 text-accent" /> },
+    { name: 'Life Members', value: 135500, icon: <Users className="h-8 w-8 text-accent" />, suffix: "+" },
+    { name: 'Student Members', value: 500000, icon: <Users className="h-8 w-8 text-accent" />, suffix: "+" },
+    { name: 'Institutions', value: 3052, icon: <Medal className="h-8 w-8 text-accent" />, suffix: "+" },
+    { name: 'Student Chapters', value: 1649, icon: <BarChart className="h-8 w-8 text-accent" />, suffix: "+" },
 ];
 
 export function About() {
@@ -45,7 +39,10 @@ export function About() {
             <Card key={stat.name} className="bg-card/50 border-border/50">
               <CardHeader className="flex flex-col items-center justify-center gap-4">
                 {stat.icon}
-                <CardTitle className="text-4xl font-extrabold text-primary">{stat.value}</CardTitle>
+                <CardTitle className="text-4xl font-extrabold text-primary">
+                    <AnimatedCounter from={0} to={stat.value} />
+                    {stat.suffix}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground font-medium">{stat.name}</p>
