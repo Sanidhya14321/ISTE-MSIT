@@ -5,15 +5,17 @@ import { SectionTitle } from "./section-title";
 import { motion } from "framer-motion";
 
 const awards = [
-  "Best Faculty Chapter – 2019 (Delhi Section)",
-  "Best Student Chapter – 2022–23 (Delhi Section)"
+  "Awarded Best Faculty Chapter in 2019 by the ISTE Delhi Section.",
+  "Recognized as the Best Student Chapter for 2022–23 in the Delhi Section."
 ];
 
 const activities = [
   "AICTE–ISTE FDPs on ICT & Entrepreneurship (2021–22)",
   "Annual Faculty Convention – Startup Challenges (2019)",
   "E-Summit (2023)",
-  "Tech Paper Presentations, Workshops, Industrial Visits"
+  "Technical Paper Presentations",
+  "Hands-On Workshops & Seminars",
+  "Insightful Industrial Visits"
 ];
 
 const cardClassName = "bg-card/50 border-border/50 h-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(155,48,255,0.3)] hover:border-primary/60";
@@ -34,34 +36,34 @@ export function Contributions() {
       transition={{ staggerChildren: 0.2 }}
     >
       <div className="container">
-        <div className="space-y-12">
-          <SectionTitle>Contributions at MSIT</SectionTitle>
+        <div className="space-y-16">
+          <SectionTitle>Our Chapter's Contributions at MSIT</SectionTitle>
           <motion.p
-            className="text-center text-muted-foreground max-w-2xl mx-auto"
+            className="text-center text-xl text-muted-foreground max-w-3xl mx-auto"
             variants={fadeIn}
           >
-            MSIT joined ISTE in 2010 (Reg. No. 1862) and established its Student Chapter in 2015, quickly becoming a hub for technical excellence and leadership.
+            Since MSIT joined ISTE in 2010 (Reg. No. 1862) and established its Student Chapter in 2015, we have been at the forefront of fostering technical excellence, leadership, and a culture of continuous learning on campus.
           </motion.p>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div variants={fadeIn}>
               <Card className={cardClassName}>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 font-headline">
-                    <Medal className="h-8 w-8 text-primary" />
-                    Our Accolades
+                  <CardTitle className="flex items-center gap-3 font-headline text-3xl">
+                    <Medal className="h-10 w-10 text-primary" />
+                    Chapter Accolades
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {awards.map((award, i) => (
                       <motion.li
                         key={award}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-4 text-lg"
                         custom={i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0, transition: { delay: 0.3 + i * 0.1 } }}
                       >
-                        <span className="text-accent mt-1">🏆</span>
+                        <span className="text-accent mt-1 text-2xl">🏆</span>
                         <span className="flex-1 text-muted-foreground">{award}</span>
                       </motion.li>
                     ))}
@@ -72,22 +74,22 @@ export function Contributions() {
             <motion.div variants={fadeIn}>
               <Card className={cardClassName}>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 font-headline">
-                      <CheckCircle className="h-8 w-8 text-primary" />
-                      Key Activities
+                  <CardTitle className="flex items-center gap-3 font-headline text-3xl">
+                      <CheckCircle className="h-10 w-10 text-primary" />
+                      Key Activities & Events
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {activities.map((activity, i) => (
                       <motion.li
                         key={activity}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-4 text-lg"
                         custom={i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0, transition: { delay: 0.3 + i * 0.1 } }}
                       >
-                          <CheckCircle className="h-5 w-5 text-accent mt-1 shrink-0" />
+                          <CheckCircle className="h-6 w-6 text-accent mt-1 shrink-0" />
                           <span className="flex-1 text-muted-foreground">{activity}</span>
                       </motion.li>
                     ))}
