@@ -66,7 +66,7 @@ export function WhyIste() {
             <motion.div className="flex items-center justify-center" variants={fadeIn}>
                 <Card className="relative group w-full max-w-lg aspect-square overflow-hidden rounded-2xl border-none shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-500">
                     <Image
-                        src="https://placehold.co/600x600.png"
+                        src="/MEME.jpg"
                         alt="Students collaborating on a tech project"
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -74,7 +74,6 @@ export function WhyIste() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-8">
-                        <h3 className="text-3xl font-bold text-white">Innovate. Collaborate. Elevate.</h3>
                         <motion.p variants={fadeIn} className="text-lg text-white/80 mt-2">Join a community that builds the future.</motion.p>
                     </div>
                 </Card>

@@ -51,7 +51,7 @@ export function Membership() {
                 variants={beforeItemVariants}
                 className="flex items-start gap-3"
               >
-                <Check className="h-6 w-6 text-accent rounded-full bg-accent/20 p-1" />
+                <Check className="h-6 w-6 text-green-500 rounded-full bg-green-500/20 p-1" />
                 <span className="text-lg">{benefit}</span>
               </motion.li>
             ))}
@@ -70,7 +70,7 @@ export function Membership() {
               <h3 className="text-xl font-bold font-headline">Scan to Join</h3>
               <div className="p-4 bg-white rounded-lg">
                 <Image
-                  src="https://placehold.co/256x256.png"
+                  src="/QR.jpg"
                   alt="QR Code for Membership"
                   width={256}
                   height={256}
@@ -78,11 +78,8 @@ export function Membership() {
                   data-ai-hint="qr code"
                 />
               </div>
-              <p className="text-muted-foreground text-sm">
-                Open your camera or QR scanner app and point it here to open the payment link.
-              </p>
               <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Link href="#">Register Now</Link>
+                <Link href="#">Join Now</Link>
               </Button>
             </CardContent>
           </Card>

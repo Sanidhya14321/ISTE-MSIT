@@ -102,7 +102,7 @@ export function Contributions() {
                         viewport={{ once: true }}
                         variants={beforeItemVariants}
                       >
-                          <CheckCircle className="h-6 w-6 text-accent mt-1 shrink-0" />
+                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 shrink-0" />
                           <span className="flex-1 text-muted-foreground">{activity}</span>
                       </motion.li>
                     ))}
