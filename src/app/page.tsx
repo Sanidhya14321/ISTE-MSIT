@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/header";
 import { About } from "@/components/landing/about";
 import { Contributions } from "@/components/landing/contributions";
 import { Departments } from "@/components/landing/departments";
+import { Faq } from "@/components/landing/faq";
 import { Footer } from "@/components/landing/footer";
 import { Hero } from "@/components/landing/hero";
 import { Membership } from "@/components/landing/membership";
@@ -20,6 +21,7 @@ export default function Home() {
         <WhyIste />
         <Departments />
         <Membership />
+        <Faq />
       </main>
       <Footer />
     </div>
