@@ -14,6 +14,15 @@ const benefits = [
   "National-level recognition"
 ];
 
+const beforeItemVariants = {
+  hidden: { x: -40, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
@@ -39,10 +48,8 @@ export function Membership() {
             {benefits.map((benefit, i) => (
               <motion.li 
                 key={benefit} 
-                className="flex items-center gap-3"
-                custom={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0, transition: { delay: 0.5 + i * 0.1 } }}
+                variants={beforeItemVariants}
+                className="flex items-start gap-3"
               >
                 <Check className="h-6 w-6 text-accent rounded-full bg-accent/20 p-1" />
                 <span className="text-lg">{benefit}</span>

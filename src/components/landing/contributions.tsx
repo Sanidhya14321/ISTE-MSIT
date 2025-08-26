@@ -25,6 +25,15 @@ const fadeIn = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
+const beforeItemVariants = {
+  hidden: { x: -40, opacity: 0 },
+  visible: (i: number) => ({
+    x: 0,
+    opacity: 1,
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
+  }),
+};
+
 export function Contributions() {
   return (
     <motion.section
@@ -60,8 +69,10 @@ export function Contributions() {
                         key={award}
                         className="flex items-start gap-4 text-lg"
                         custom={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0, transition: { delay: 0.3 + i * 0.1 } }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={beforeItemVariants}
                       >
                         <span className="text-accent mt-1 text-2xl">🏆</span>
                         <span className="flex-1 text-muted-foreground">{award}</span>
@@ -86,8 +97,10 @@ export function Contributions() {
                         key={activity}
                         className="flex items-start gap-4 text-lg"
                         custom={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0, transition: { delay: 0.3 + i * 0.1 } }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={beforeItemVariants}
                       >
                           <CheckCircle className="h-6 w-6 text-accent mt-1 shrink-0" />
                           <span className="flex-1 text-muted-foreground">{activity}</span>

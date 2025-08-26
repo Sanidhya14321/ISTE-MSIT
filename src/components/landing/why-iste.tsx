@@ -20,6 +20,15 @@ const fadeIn = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
+const beforeItemVariants = {
+    hidden: { x: -40, opacity: 0 },
+    visible: (i: number) => ({
+      x: 0,
+      opacity: 1,
+      transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
+    }),
+  };
+
 export function WhyIste() {
   return (
     <motion.section 
@@ -42,8 +51,11 @@ export function WhyIste() {
                   <motion.li 
                     key={index} 
                     className="flex items-start gap-4"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0, transition: { delay: 0.3 + index * 0.1 } }}
+                    custom={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={beforeItemVariants}
                   >
                     <Check className="h-7 w-7 text-primary mt-1 shrink-0 p-1 bg-primary/20 rounded-full" />
                     <span className="text-xl text-muted-foreground flex-1">{benefit}</span>
@@ -63,7 +75,7 @@ export function WhyIste() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-8">
                         <h3 className="text-3xl font-bold text-white">Innovate. Collaborate. Elevate.</h3>
-                        <p className="text-lg text-white/80 mt-2">Join a community that builds the future.</p>
+                        <motion.p variants={fadeIn} className="text-lg text-white/80 mt-2">Join a community that builds the future.</motion.p>
                     </div>
                 </Card>
             </motion.div>

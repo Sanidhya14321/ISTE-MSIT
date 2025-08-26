@@ -58,6 +58,11 @@ const cardVariants = {
   }),
 };
 
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
 export function Departments() {
   return (
     <motion.section 
@@ -79,7 +84,7 @@ export function Departments() {
                   <CardTitle className="font-headline text-2xl text-left">{dept.name}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <p className="text-muted-foreground text-left text-lg">{dept.description}</p>
+                  <motion.p variants={fadeIn} className="text-muted-foreground text-left text-lg">{dept.description}</motion.p>
                 </CardContent>
               </Card>
             </motion.div>

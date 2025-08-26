@@ -59,7 +59,7 @@ export function About() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg text-muted-foreground font-medium">{stat.name}</p>
+                  <motion.p variants={fadeIn} className="text-lg text-muted-foreground font-medium">{stat.name}</motion.p>
                 </CardContent>
               </Card>
             </motion.div>
