@@ -1,11 +1,12 @@
-'use client';
+"use client";
+
 import { generateWelcomeMessage } from "@/ai/flows/generate-welcome-message";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { AnimatedBackground } from "../ui/animated-background";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { WelcomeMessageOutput } from "@/ai/flows/generate-welcome-message";
+import Prism from "../Background";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -58,7 +59,10 @@ export function Hero() {
         setWelcomeMessage(messageData);
       } catch (error) {
         console.error("Failed to generate welcome message:", error);
-        setWelcomeMessage({ message: "Welcome to the hub of innovation and technology. Explore your potential with us." });
+        setWelcomeMessage({
+          message:
+            "Welcome to the hub of innovation and technology. Explore your potential with us.",
+        });
       } finally {
         setIsLoading(false);
       }
@@ -68,9 +72,24 @@ export function Hero() {
 
   return (
     <section className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden">
-      <AnimatedBackground />
+      {/* Background Prism Animation */}
+      <div className="absolute inset-0 w-full h-auto">
+        <Prism
+          animationType="rotate"
+          timeScale={0.8}
+          height={2}
+          baseWidth={3.5}
+          scale={3.6}
+          hueShift={0}
+          colorFrequency={1}
+          noise={0.2}
+          glow={0.7}
+        />
+      </div>
+
+      {/* Foreground Content */}
       <motion.div
-        className="container z-10"
+        className="relative z-10 container"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -81,17 +100,25 @@ export function Hero() {
         >
           ISTE MSIT Hub
         </motion.h1>
+
         <motion.p
           className="mt-6 max-w-3xl mx-auto text-lg text-foreground/80 md:text-xl"
           variants={textVariants}
         >
-          {isLoading ? "Generating a creative welcome..." : welcomeMessage?.message}
+          {isLoading
+            ? "Generating a creative welcome..."
+            : welcomeMessage?.message}
         </motion.p>
+
         <motion.div
           className="mt-10 flex flex-wrap justify-center gap-4"
           variants={textVariants}
         >
-          <Button size="lg" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Button
+            size="lg"
+            asChild
+            className="bg-accent hover:bg-accent/90 text-accent-foreground"
+          >
             <Link href="#membership">Become a Member</Link>
           </Button>
           <Button size="lg" variant="outline" asChild>

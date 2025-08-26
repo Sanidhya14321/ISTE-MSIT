@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/layout/header";
 import { About } from "@/components/landing/about";
 import { Contributions } from "@/components/landing/contributions";
