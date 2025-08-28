@@ -3,8 +3,8 @@
 import { generateWelcomeMessage } from "@/ai/flows/generate-welcome-message";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { WelcomeMessageOutput } from "@/ai/flows/generate-welcome-message";
 import Prism from "../Background";
 
@@ -32,6 +32,10 @@ const containerVariants = {
 export function Hero() {
   const [welcomeMessage, setWelcomeMessage] = useState<WelcomeMessageOutput | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // 👇 detect if Hero section is visible
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef, { margin: "-100px", once: false }); 
 
   useEffect(() => {
     async function getWelcomeMessage() {
@@ -71,21 +75,26 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden">
-      {/* Background Prism Animation */}
-      <div className="absolute inset-0 w-full h-auto">
-        <Prism
-          animationType="rotate"
-          timeScale={0.8}
-          height={2}
-          baseWidth={3.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0.2}
-          glow={0.7}
-        />
-      </div>
+    <section
+      ref={heroRef}
+      className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
+    >
+      {/* Background Prism Animation - only runs when visible */}
+      {isInView && (
+        <div className="absolute inset-0 w-full h-auto">
+          <Prism
+            animationType="rotate"
+            timeScale={0.8}
+            height={2}
+            baseWidth={3.5}
+            scale={3.6}
+            hueShift={0}
+            colorFrequency={1}
+            noise={0.2}
+            glow={0.7}
+          />
+        </div>
+      )}
 
       {/* Foreground Content */}
       <motion.div

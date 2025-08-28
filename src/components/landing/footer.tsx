@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Rocket, Instagram, Mail } from "lucide-react";
+import { Rocket, Instagram } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,29 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export function Footer() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const createMailtoLink = () => {
+    const subject = encodeURIComponent("Contact ISTE-MSIT");
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    return `mailto:vatssanidhya14321@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <>
       {/* Contact Us Button */}
@@ -28,15 +49,15 @@ export function Footer() {
                 Get in Touch
               </DialogTitle>
             </DialogHeader>
-            <form
-              action="https://formspree.io/f/your-form-id" // 🔗 replace with Formspree ID
-              method="POST"
-              className="flex flex-col space-y-4"
-            >
+
+            {/* Mailto Form */}
+            <div className="flex flex-col space-y-4">
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
                 required
                 className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
@@ -44,6 +65,8 @@ export function Footer() {
                 type="email"
                 name="email"
                 placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
@@ -51,13 +74,18 @@ export function Footer() {
                 name="message"
                 placeholder="Your Message"
                 rows={3}
+                value={formData.message}
+                onChange={handleChange}
                 required
                 className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <Button type="submit" className="bg-primary text-white rounded-lg">
+              <a
+                href={createMailtoLink()}
+                className="bg-primary text-white rounded-lg px-4 py-2 text-center hover:opacity-90 transition"
+              >
                 Send Message
-              </Button>
-            </form>
+              </a>
+            </div>
           </DialogContent>
         </Dialog>
       </div>
@@ -77,12 +105,14 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Middle Empty (now handled by dialog above) */}
+            {/* Middle Empty */}
             <div></div>
 
             {/* Stay Connected */}
             <div>
-              <h4 className="font-semibold mb-4 font-headline">Stay Connected</h4>
+              <h4 className="font-semibold mb-4 font-headline">
+                Stay Connected
+              </h4>
               <div className="flex justify-center md:justify-start space-x-4">
                 <Link
                   href="https://instagram.com/ISTE.MSIT"
