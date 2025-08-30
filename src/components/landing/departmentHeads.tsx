@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Linkedin, Instagram, Twitter, ChevronLeft, ChevronRight, Github } from "lucide-react";
+import { Linkedin, Instagram, ChevronLeft, ChevronRight, Github } from "lucide-react";
 import { SectionTitle } from "./section-title";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -85,16 +85,14 @@ export function DepartmentHeads() {
     departmentHeads[(index + 1) % departmentHeads.length],
   ];
 
-  // Auto-scroll every 5s
-  useEffect(() => {
-    const timer = setInterval(() => setIndex((prev) => (prev + 2) % departmentHeads.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   const prevSlide = () =>
     setIndex((prev) => (prev - 2 + departmentHeads.length) % departmentHeads.length);
   const nextSlide = () =>
     setIndex((prev) => (prev + 2) % departmentHeads.length);
+
+  // Number of slides = total heads / 2
+  const totalSlides = Math.ceil(departmentHeads.length / 2);
+  const currentSlide = Math.floor(index / 2);
 
   return (
     <section id="heads" className="container py-20">
@@ -153,6 +151,19 @@ export function DepartmentHeads() {
         >
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center mt-6 gap-2">
+        {Array.from({ length: totalSlides }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i * 2)}
+            className={`w-3 h-3 rounded-full transition ${
+              i === currentSlide ? "bg-primary" : "bg-gray-400/50"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

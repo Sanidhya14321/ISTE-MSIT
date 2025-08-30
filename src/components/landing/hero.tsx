@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { WelcomeMessageOutput } from "@/ai/flows/generate-welcome-message";
 import Prism from "../Background";
+import Loader from "../ui/Loader";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -113,7 +114,7 @@ export function Hero() {
         >
           {isLoading ? (
             <p className="text-center italic text-lg text-foreground/80">
-              ✨ Generating a creative welcome...
+              <Loader />
             </p>
           ) : (
             <>
