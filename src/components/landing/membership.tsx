@@ -57,10 +57,10 @@ export function Membership() {
             ))}
           </ul>
           <motion.div 
-            className="text-lg font-semibold text-center md:text-left p-4 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-orange-500/10 rounded-lg"
+            className="text-lg font-semibold text-center md:text-left p-4 rounded-lg"
             variants={fadeIn}
           >
-            🚀 Join the Tech Elite – Be a Proud ISTE Member!
+             Join the Tech Elite – Be a Proud ISTE Member!
           </motion.div>
         </motion.div>
 
