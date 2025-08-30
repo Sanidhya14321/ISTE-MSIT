@@ -73,11 +73,11 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
+      className="relative w-full min-h-[100vh] flex items-center justify-center text-center overflow-hidden px-4 sm:px-6 md:px-10"
     >
       {/* Background Animation */}
       {isInView && (
-        <div className="absolute inset-0 md:w-full h-auto">
+        <div className="absolute inset-0 w-full h-full">
           <Prism
             animationType="rotate"
             timeScale={0.8}
@@ -94,14 +94,14 @@ export function Hero() {
 
       {/* Foreground Content */}
       <motion.div
-        className="relative z-10 container"
+        className="relative z-10 max-w-6xl w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Title */}
         <motion.h1
-          className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-violet-400 to-white"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight font-headline bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-violet-400 to-white"
           variants={textVariants}
         >
           ISTE MSIT
@@ -109,31 +109,30 @@ export function Hero() {
 
         {/* AI Generated Sections */}
         <motion.div
-          className="mt-8 max-w-5xl mx-auto grid gap-6 md:gap-8"
+          className="mt-6 sm:mt-8 max-w-5xl mx-auto grid gap-6 sm:gap-8"
           variants={textVariants}
         >
           {isLoading ? (
-            <p className="text-center italic text-lg text-foreground/80">
+            <div className="flex justify-center">
               <Loader />
-            </p>
+            </div>
           ) : (
             <>
               {/* Main Description */}
-              {/* Main Description */}
-              <div className="p-6 rounded-2xl">
-                <p className="text-lg md:text-xl leading-relaxed text-foreground/90">
+              <div className="p-4 sm:p-6 rounded-2xl">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed text-foreground/90">
                   {welcomeMessage?.mainDescription}
                 </p>
               </div>
 
               {/* Society Highlights & Additional Perks side by side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 text-left">
                 {/* Society Highlights */}
-                <div className="p-6 rounded-2xl">
-                  <h2 className="text-xl md:text-2xl font-bold text-purple-300 mb-3">
+                <div className="p-4 sm:p-6 rounded-2xl bg-background/25 backdrop-blur-sm">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-300 mb-3">
                     Society Highlights
                   </h2>
-                  <ul className="list-disc list-inside space-y-2 text-left text-foreground/90">
+                  <ul className="list-disc list-inside space-y-2 text-foreground/90 text-sm sm:text-base">
                     {welcomeMessage?.societyHighlights?.map((point, idx) => (
                       <li key={idx}>{point}</li>
                     ))}
@@ -141,35 +140,39 @@ export function Hero() {
                 </div>
 
                 {/* Additional Perks */}
-                <div className="p-6 rounded-2xl">
-                  <h2 className="text-xl md:text-2xl font-bold text-purple-300 mb-3">
+                <div className="p-4 sm:p-6 rounded-2xl bg-background/25 backdrop-blur-sm">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-300 mb-3">
                     Additional Perks
                   </h2>
-                  <ul className="list-disc list-inside space-y-2 text-left text-foreground/90">
+                  <ul className="list-disc list-inside space-y-2 text-foreground/90 text-sm sm:text-base">
                     {welcomeMessage?.additionalPerks?.map((perk, idx) => (
                       <li key={idx}>{perk}</li>
                     ))}
                   </ul>
                 </div>
               </div>
-
             </>
           )}
         </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-4"
           variants={textVariants}
         >
           <Button
             size="lg"
             asChild
-            className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto"
           >
             <Link href="#membership">Become a Member</Link>
           </Button>
-          <Button size="lg" variant="outline" asChild>
+          <Button
+            size="lg"
+            variant="outline"
+            asChild
+            className="w-full sm:w-auto"
+          >
             <Link href="#about">Learn More</Link>
           </Button>
         </motion.div>
