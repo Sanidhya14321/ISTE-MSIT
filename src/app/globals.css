@@ -4,61 +4,66 @@
 
 @layer base {
   :root {
-    --background: 230 65% 30%;   /* #1A2A80 */
-    --foreground: 0 0% 98%;
+    --background: 0 0% 98%;       /* #FAFAFA - light background */
+    --foreground: 230 65% 20%;    /* #1A234D - dark navy text */
 
-    --card: 232 48% 42%;         /* #3B38A0 */
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;            /* pure white cards */
+    --card-foreground: 230 65% 20%;
 
-    --popover: 230 65% 30%;      /* #1A2A80 */
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 65% 20%;
 
-    /* 🔹 Updated primary for more contrast */
-    --primary: 245 55% 70%;      /* ~#8F8CE6 (bright violet) */
-    --primary-foreground: 0 0% 98%;
+    /* Bright violet accent for contrast */
+    --primary: 245 65% 55%;       /* #6E63E7 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 229 29% 62%;    /* #7A85C1 */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 229 25% 70%;     /* #9AA7D6 - subtle muted blue */
+    --secondary-foreground: 230 65% 20%;
 
-    --muted: 230 65% 30%;
-    --muted-foreground: 229 29% 75%;
+    --muted: 230 20% 92%;         /* light gray-blue */
+    --muted-foreground: 229 15% 45%;
 
-    --accent: 245 55% 80%;       /* #B2B0E8 */
-    --accent-foreground: 0 0% 15%;
+    --accent: 245 55% 80%;        /* soft lavender */
+    --accent-foreground: 230 65% 20%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 70% 50%;     /* bright red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 232 48% 42%;
-    --input: 232 48% 42%;
-    --ring: 245 55% 70%;
+    --border: 230 20% 88%;
+    --input: 230 20% 88%;
+    --ring: 245 65% 55%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 230 65% 30%;
+    --background: 230 65% 12%;    /* deep navy */
     --foreground: 0 0% 98%;
-    --card: 232 48% 42%;
+
+    --card: 230 65% 18%;
     --card-foreground: 0 0% 98%;
-    --popover: 230 65% 30%;
+
+    --popover: 230 65% 18%;
     --popover-foreground: 0 0% 98%;
 
-    /* 🔹 Bright violet stays as primary */
-    --primary: 245 55% 70%;      
-    --primary-foreground: 0 0% 98%;
+    --primary: 245 65% 65%;       /* slightly brighter violet */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 229 29% 62%;
+    --secondary: 229 20% 40%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 230 65% 30%;
-    --muted-foreground: 229 29% 75%;
-    --accent: 245 55% 80%;
-    --accent-foreground: 0 0% 15%;
-    --destructive: 0 63% 31%;
+
+    --muted: 230 20% 25%;
+    --muted-foreground: 229 15% 75%;
+
+    --accent: 245 55% 75%;
+    --accent-foreground: 230 65% 10%;
+
+    --destructive: 0 63% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 232 48% 42%;
-    --input: 232 48% 42%;
-    --ring: 245 55% 70%;
+
+    --border: 230 20% 35%;
+    --input: 230 20% 35%;
+    --ring: 245 65% 65%;
   }
 }
 

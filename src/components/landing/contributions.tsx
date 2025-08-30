@@ -38,7 +38,7 @@ export function Contributions() {
   return (
     <motion.section
       id="contributions"
-      className="bg-muted/20"
+      className="container"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}

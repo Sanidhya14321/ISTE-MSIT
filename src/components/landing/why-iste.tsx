@@ -33,7 +33,7 @@ export function WhyIste() {
   return (
     <motion.section
       id="why-iste"
-      className="bg-muted/20"
+      className="container"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}

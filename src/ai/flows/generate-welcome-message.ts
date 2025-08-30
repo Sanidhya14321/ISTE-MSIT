@@ -8,9 +8,10 @@
  * - WelcomeMessageOutput - The return type for the generateWelcomeMessage function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { ai } from '@/ai/genkit';
+import { z } from 'genkit';
 
+// Input Schema
 const WelcomeMessageInputSchema = z.object({
   departments: z.array(z.string()).describe('List of key departments in ISTE MSIT.'),
   values: z.array(z.string()).describe('Key values of ISTE MSIT.'),
@@ -18,8 +19,11 @@ const WelcomeMessageInputSchema = z.object({
 });
 export type WelcomeMessageInput = z.infer<typeof WelcomeMessageInputSchema>;
 
+// Output Schema (3 parts instead of single message)
 const WelcomeMessageOutputSchema = z.object({
-  message: z.string().describe('The generated welcome message.'),
+  mainDescription: z.string().describe('The main welcome description of ISTE MSIT.'),
+  societyHighlights: z.array(z.string()).describe('Key points about the society.'),
+  additionalPerks: z.array(z.string()).describe('Additional perks of joining ISTE MSIT.'),
 });
 export type WelcomeMessageOutput = z.infer<typeof WelcomeMessageOutputSchema>;
 
@@ -27,21 +31,32 @@ export async function generateWelcomeMessage(input: WelcomeMessageInput): Promis
   return generateWelcomeMessageFlow(input);
 }
 
+// Prompt Definition
+// Prompt Definition
 const prompt = ai.definePrompt({
   name: 'generateWelcomeMessagePrompt',
-  input: {schema: WelcomeMessageInputSchema},
-  output: {schema: WelcomeMessageOutputSchema},
-  prompt: `You are a creative copywriter tasked with crafting a welcome message for the ISTE MSIT Hub website.
+  input: { schema: WelcomeMessageInputSchema },
+  output: { schema: WelcomeMessageOutputSchema },
+  prompt: `You are a creative copywriter tasked with crafting a concise and structured welcome message for the ISTE MSIT Hub website.
 
-The message should be tailored to the website's tone, highlight key departments, and reflect ISTE's values.
+The message must be divided into 3 sections:
 
-Website Tone: {{tone}}
-Key Departments: {{departments}}
-ISTE Values: {{values}}
+1. **Main Description**  
+   - A single energetic and professional sentence.  
+   - Briefly touch on departments: {{departments}}.  
+   - Reflect ISTE values: {{values}}.
 
-Write a compelling and concise welcome message (around 15-20 words) that immediately conveys what ISTE at MSIT is all about.`,
+2. **Society Highlights**  
+   - A list of 2 short, impactful points about what ISTE MSIT offers.
+
+3. **Additional Perks**  
+   - A list of 1–2 perks/benefits of joining ISTE MSIT.
+
+Keep the tone clear, professional, and engaging. Avoid long explanations.` 
 });
 
+
+// Flow
 const generateWelcomeMessageFlow = ai.defineFlow(
   {
     name: 'generateWelcomeMessageFlow',
@@ -49,7 +64,7 @@ const generateWelcomeMessageFlow = ai.defineFlow(
     outputSchema: WelcomeMessageOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const { output } = await prompt(input);
     return output!;
   }
 );

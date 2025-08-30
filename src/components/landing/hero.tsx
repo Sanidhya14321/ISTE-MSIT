@@ -13,29 +13,21 @@ const textVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.2 } },
 };
 
 export function Hero() {
   const [welcomeMessage, setWelcomeMessage] = useState<WelcomeMessageOutput | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 👇 detect if Hero section is visible
   const heroRef = useRef(null);
-  const isInView = useInView(heroRef, { margin: "-100px", once: false }); 
+  const isInView = useInView(heroRef, { margin: "-100px", once: false });
 
   useEffect(() => {
     async function getWelcomeMessage() {
@@ -60,12 +52,15 @@ export function Hero() {
           ],
           tone: "energetic and professional",
         });
+
         setWelcomeMessage(messageData);
       } catch (error) {
         console.error("Failed to generate welcome message:", error);
         setWelcomeMessage({
-          message:
-            "Welcome to the hub of innovation and technology. Explore your potential with us.",
+          mainDescription:
+            "Welcome to ISTE MSIT – the hub of innovation and technology. Explore your potential with us.",
+          societyHighlights: ["Collaborate with peers", "Gain real-world skills"],
+          additionalPerks: ["Exclusive networking", "Industry exposure"],
         });
       } finally {
         setIsLoading(false);
@@ -79,7 +74,7 @@ export function Hero() {
       ref={heroRef}
       className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
     >
-      {/* Background Prism Animation - only runs when visible */}
+      {/* Background Animation */}
       {isInView && (
         <div className="absolute inset-0 md:w-full h-auto">
           <Prism
@@ -103,6 +98,7 @@ export function Hero() {
         initial="hidden"
         animate="visible"
       >
+        {/* Title */}
         <motion.h1
           className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-violet-400 to-white"
           variants={textVariants}
@@ -110,15 +106,57 @@ export function Hero() {
           ISTE MSIT
         </motion.h1>
 
-        <motion.p
-          className="mt-6 max-w-3xl mx-auto text-lg text-foreground/80 md:text-xl"
+        {/* AI Generated Sections */}
+        <motion.div
+          className="mt-8 max-w-5xl mx-auto grid gap-6 md:gap-8"
           variants={textVariants}
         >
-          {isLoading
-            ? "Generating a creative welcome..."
-            : welcomeMessage?.message}
-        </motion.p>
+          {isLoading ? (
+            <p className="text-center italic text-lg text-foreground/80">
+              ✨ Generating a creative welcome...
+            </p>
+          ) : (
+            <>
+              {/* Main Description */}
+              {/* Main Description */}
+              <div className="p-6 rounded-2xl">
+                <p className="text-lg md:text-xl leading-relaxed text-foreground/90">
+                  {welcomeMessage?.mainDescription}
+                </p>
+              </div>
 
+              {/* Society Highlights & Additional Perks side by side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+                {/* Society Highlights */}
+                <div className="p-6 rounded-2xl">
+                  <h2 className="text-xl md:text-2xl font-bold text-purple-300 mb-3">
+                    Society Highlights
+                  </h2>
+                  <ul className="list-disc list-inside space-y-2 text-left text-foreground/90">
+                    {welcomeMessage?.societyHighlights?.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Additional Perks */}
+                <div className="p-6 rounded-2xl">
+                  <h2 className="text-xl md:text-2xl font-bold text-purple-300 mb-3">
+                    Additional Perks
+                  </h2>
+                  <ul className="list-disc list-inside space-y-2 text-left text-foreground/90">
+                    {welcomeMessage?.additionalPerks?.map((perk, idx) => (
+                      <li key={idx}>{perk}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+            </>
+          )}
+        </motion.div>
+
+        {/* CTA Buttons */}
         <motion.div
           className="mt-10 flex flex-wrap justify-center gap-4"
           variants={textVariants}
