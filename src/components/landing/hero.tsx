@@ -77,11 +77,11 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
+      className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
     >
       {/* Background Prism Animation - only runs when visible */}
       {isInView && (
-        <div className="absolute inset-0 w-full h-auto">
+        <div className="absolute inset-0 md:w-full h-auto">
           <Prism
             animationType="rotate"
             timeScale={0.8}
@@ -104,10 +104,10 @@ export function Hero() {
         animate="visible"
       >
         <motion.h1
-          className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-pink-500 to-orange-400"
+          className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-violet-400 to-white"
           variants={textVariants}
         >
-          ISTE MSIT Hub
+          ISTE MSIT
         </motion.h1>
 
         <motion.p

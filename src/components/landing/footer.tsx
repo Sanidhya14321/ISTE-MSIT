@@ -59,7 +59,7 @@ export function Footer() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-2 rounded-lg border text-black border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="email"
@@ -68,7 +68,7 @@ export function Footer() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-2 rounded-lg border text-black border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <textarea
                 name="message"
@@ -77,7 +77,7 @@ export function Footer() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="p-2 rounded-lg border border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-2 rounded-lg border text-black border-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <a
                 href={createMailtoLink()}
@@ -97,8 +97,7 @@ export function Footer() {
             {/* Left Section */}
             <div className="flex flex-col items-center md:items-start">
               <Link href="#" className="flex items-center space-x-2 mb-4">
-                <Rocket className="h-6 w-6 text-primary" />
-                <span className="font-bold">ISTE MSIT Hub</span>
+                <span className="font-bold">ISTE MSIT</span>
               </Link>
               <p className="text-muted-foreground text-sm">
                 &copy; {new Date().getFullYear()} ISTE MSIT. All Rights Reserved.

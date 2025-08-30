@@ -68,7 +68,7 @@ export function Membership() {
           <Card className="p-6 bg-card/50 border-border/50 max-w-sm w-full text-center space-y-4 shadow-lg">
             <CardContent className="p-0 space-y-4">
               <h3 className="text-xl font-bold font-headline">Scan to Join</h3>
-              <div className="p-4 bg-white rounded-lg">
+              <div className="p-4 bg-transparent rounded-lg">
                 <Image
                   src="/QR.jpg"
                   alt="QR Code for Membership"

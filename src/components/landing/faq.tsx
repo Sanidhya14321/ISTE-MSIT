@@ -51,7 +51,7 @@ export function Faq() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="space-y-12">
-        <SectionTitle>Frequently Asked Questions</SectionTitle>
+        <SectionTitle className="p-2">Frequently Asked Questions</SectionTitle>
         <motion.div
           className="max-w-3xl mx-auto"
           variants={fadeIn}

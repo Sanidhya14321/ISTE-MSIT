@@ -18,7 +18,7 @@ const activities = [
   "Insightful Industrial Visits"
 ];
 
-const cardClassName = "bg-card/50 border-border/50 h-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(155,48,255,0.3)] hover:border-primary/60";
+const cardClassName = "bg-card/50 border-border/50 h-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(155,48,255,0.3)] hover:border-primary/60";
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -86,8 +86,8 @@ export function Contributions() {
               <Card className={cardClassName}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 font-headline text-3xl">
-                      <CheckCircle className="h-10 w-10 text-primary" />
-                      Key Activities & Events
+                    <CheckCircle className="h-10 w-10 text-primary" />
+                    Key Activities & Events
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -102,8 +102,7 @@ export function Contributions() {
                         viewport={{ once: true }}
                         variants={beforeItemVariants}
                       >
-                          <CheckCircle className="h-6 w-6 text-green-500 mt-1 shrink-0" />
-                          <span className="flex-1 text-muted-foreground">{activity}</span>
+                        <span className="flex-1 text-muted-foreground">- {activity}</span>
                       </motion.li>
                     ))}
                   </ul>

@@ -53,8 +53,8 @@ export function About() {
               <Card className="bg-card/50 border-border/50 h-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(155,48,255,0.3)] hover:border-primary/60">
                 <CardHeader className="flex flex-col items-center justify-center gap-4">
                   {stat.icon}
-                  <CardTitle className="text-5xl font-extrabold text-primary">
-                      <AnimatedCounter from={0} to={stat.value} />
+                  <CardTitle className="text-5xl font-extrabold text-white">
+                      <AnimatedCounter from={stat.value*6/7} to={stat.value} />
                       {stat.suffix}
                   </CardTitle>
                 </CardHeader>
