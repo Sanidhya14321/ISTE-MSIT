@@ -74,18 +74,18 @@ export function Departments() {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ staggerChildren: 0.2 }}
     >
-      <div className="space-y-16 ">
-        <SectionTitle className="p-3">Our Dynamic Departments</SectionTitle>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="space-y-10">
+        <SectionTitle className="">Our Dynamic Departments</SectionTitle>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {departments.map((dept, i) => (
             <motion.div key={dept.name} custom={i} variants={cardVariants} className={cn(dept.className)}>
               <Card className="bg-card/50 border-border/50 h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_50px_rgba(155,48,255,0.2)] hover:border-primary/60">
-                <CardHeader className="items-start gap-2">
+                <CardHeader className="items-start">
                   {dept.icon}
                   <CardTitle className="font-headline text-2xl text-left">{dept.name}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <motion.p variants={fadeIn} className="text-muted-foreground text-left text-sm">{dept.description}</motion.p>
+                  <motion.p variants={fadeIn} className="text-muted-foreground text-left text-md">{dept.description}</motion.p>
                 </CardContent>
               </Card>
             </motion.div>

@@ -9,6 +9,7 @@ import { Footer } from "@/components/landing/footer";
 import { Hero } from "@/components/landing/hero";
 import { Membership } from "@/components/landing/membership";
 import { WhyIste } from "@/components/landing/why-iste";
+import { PresidentSection } from "@/components/landing/PresidentSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <About />
         <Contributions />
         <WhyIste />
+        <PresidentSection />
         <Departments />
         <Membership />
         <Faq />
