@@ -61,7 +61,7 @@ export function Header() {
             className="mr-6 flex items-center space-x-2"
             onClick={(e) => handleLinkClick(e, "#")}
           >
-            <span className="font-bold text-xl inline-block">ISTE MSIT</span>
+            <span className="font-bold text-xl inline-block">ISTE-MSIT</span>
           </Link>
         </motion.div>
 
@@ -124,7 +124,7 @@ export function Header() {
                     onClick={(e) => handleLinkClick(e, "#")}
                   >
                     <Rocket className="h-6 w-6 text-primary" />
-                    <span className="font-bold">ISTE MSIT Hub</span>
+                    <span className="font-bold">ISTE-MSIT</span>
                   </Link>
                 </motion.div>
 
